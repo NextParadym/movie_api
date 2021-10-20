@@ -1,17 +1,37 @@
 URL: /
-Timestamp: Tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
+Timestamp: tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
 
 URL: /favicon.ico
-Timestamp: Tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
+Timestamp: tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
 
 URL: /documentation
-Timestamp: Tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
+Timestamp: tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
 
 URL: /favicon.ico
-Timestamp: Tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
+Timestamp: tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
 
 URL: /doc
-Timestamp: Tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
+Timestamp: tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
 
 URL: /favicon.ico
-Timestamp: Tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)
+Timestamp: tue Oct 19 2021 15:33:22 GMT+0200 (Central European Summer Time)URL: /
+Timestamp: Wed Oct 20 2021 08:39:48 GMT+0200 (Central European Summer Time)
+
+URL: /favicon.ico
+Timestamp: Wed Oct 20 2021 08:39:48 GMT+0200 (Central European Summer Time)
+
+URL: /index.html
+Timestamp: Wed Oct 20 2021 08:40:21 GMT+0200 (Central European Summer Time)
+
+URL: /favicon.ico
+Timestamp: Wed Oct 20 2021 08:40:21 GMT+0200 (Central European Summer Time)
+
+URL: /documentation.html
+Timestamp: Wed Oct 20 2021 08:40:48 GMT+0200 (Central European Summer Time)
+
+URL: /server.js
+Timestamp: Wed Oct 20 2021 08:40:48 GMT+0200 (Central European Summer Time)
+
+URL: /favicon.ico
+Timestamp: Wed Oct 20 2021 08:40:48 GMT+0200 (Central European Summer Time)
+
