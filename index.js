@@ -1,4 +1,5 @@
 
+//Require
 const express = require('express');
 const app = express(),
 morgan = require('morgan');
@@ -35,8 +36,8 @@ app.get('/books', (req, res) => {
 // Serving static files
 app.use(express.static('public'));
 
-  // Use the Morgan middleware library to log all requests (instead of using 
-  //the fs module to write to a text file).
+// Use the Morgan middleware library to log all requests (instead of using 
+//the fs module to write to a text file).
 app.use(morgan('common'));
 
 app.get('/', (req, res) => {
@@ -47,7 +48,7 @@ app.get('/secreturl', (req, res) => {
     res.send('This is a secret url with super top-secret content.');
 });
 
-// error-handling middleware function that will log all application-level errors to the terminal.
+// error-handling middleware function that will log all application-level errors to the terminal
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
