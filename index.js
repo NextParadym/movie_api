@@ -47,7 +47,9 @@ let topTenMovies = [
             {
                 id:1,
                 name:'Jason Moore ',
-                biography:'   '
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     },
@@ -73,9 +75,11 @@ let topTenMovies = [
         ],
         director:[
             {
-                id:1,
-                name:['Ron Howard'],
-                biography:'   '
+                id:2,
+                name:'Ron Howard',
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     },
@@ -96,9 +100,11 @@ let topTenMovies = [
             ],
         director:[
             {
-                id:1,
-                name:['Morris D. Small'],
-                biography:'   '
+                id:3,
+                name:'Morris D. Small',
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     },
@@ -119,9 +125,11 @@ let topTenMovies = [
             ],
         director:[
             {
-                id:1,
-                name:['Tony Sebastian Ukpo'],
-                biography:'   '
+                id:4,
+                name:'Tony Sebastian Ukpo',
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     },
@@ -142,9 +150,11 @@ let topTenMovies = [
             ],
         director:[
             {
-                id:1,
-                name:['Jerry Lewis'],
-                biography:'   '
+                id:5,
+                name:'Jerry Lewis',
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     },
@@ -165,9 +175,11 @@ let topTenMovies = [
             ],
         director:[
             {
-                id:1,
-                name:['Kyle Newacheck'],
-                biography:'   '
+                id:6,
+                name:'Kyle Newacheck',
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     },
@@ -188,9 +200,11 @@ let topTenMovies = [
             ],
         director:[
             {
-                id:1,
-                name:['Derrick Comedy'],
-                biography:'   '
+                id:7,
+                name:'Derrick Comedy',
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     },
@@ -211,9 +225,11 @@ let topTenMovies = [
             ],
         director:[
             {
-                id:1,
-                name:['Gary Trousdale'],
-                biography:'   '
+                id:8,
+                name:'Gary Trousdale',
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     },
@@ -234,9 +250,11 @@ let topTenMovies = [
             ],
         director:[
             {
-                id:1,
-                name:['Barry Williams'],
-                biography:'   '
+                id:9,
+                name:'Barry Williams',
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     },
@@ -257,7 +275,7 @@ let topTenMovies = [
             ],
         director:[
             {
-                id:2,
+                id:10,
                 name:'Leslie Small',
                 birth_year: '',
                 death_year: '',
@@ -267,43 +285,108 @@ let topTenMovies = [
     }
 ];
 
+// Genre objects
 const Genres = [
     {
         id:1,
         name:'Comedy',
-        description:'   '
+        description:'   ',
     },
     {
         id:2,
         name:'Action',
-        description:'   '
+        description:'   ',
     },
     {
         id:3,
         name:'Adventure',
-        description:'   '
+        description:'   ',
     },
     {
         id:4,
         name:'Romance',
-        description:'   '
+        description:'   ',
     },
     {
         id:5,
         name:'Documentary',
-        description:'   '
+        description:'   ',
     },
     {
         id:6,
         name:'Music',
-        description:'   '
+        description:'   ',
     },
 ];
 
+// Director objects
 const Directors = [
     {
         id: 1,
-        name: 'Jason',
+        name: 'Jason Moore',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+    {
+        id: 2,
+        name: 'Ron Howard',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+    {
+        id: 3,
+        name: 'Morris D. Small',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+    {
+        id: 4,
+        name: 'Tony Sebastian Ukpo',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+    {
+        id: 5,
+        name: 'Jerry Lewis',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+    {
+        id: 6,
+        name: 'Kyle Newacheck',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+    {
+        id: 7,
+        name: 'Derrick Comedy',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+    {
+        id: 8,
+        name: 'Gary Trousdale',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+    {
+        id: 9,
+        name: 'Barry Williams',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+    {
+        id: 10,
+        name: 'Leslie Small',
         birth_year: '',
         death_year: '',
         bio: '',
@@ -328,22 +411,19 @@ app.get('/movies/:title', (req, res) => {
 // Get data about movies by genre by name
 app.get('/genres/:genreName', (req, res) => {
     const genre = Genres.find(g => g.name === req.params.genreName)
-    res.json(genre || []);
+    res.json(genre);
 });
 
+// Get data about movies by genre by id
 app.get('/genres/id/:id', (req, res) => {
     const genre = Genres.find(g => g.id === parseInt(req.params.id))
     res.json(genre || []);
 });
 
-// TODO: do the similar thing whatwe did for Genre
-// Create Director array
-// Modifiy movies's director attributes
-// Here add the logic similar to line 330 & 331 (genreName)
-//Get data of a director's information by name
+// Get data about movies by directors by name
 app.get('/directors/:directorName', (req, res) => {
-    console.log(req.params.directorName)
-    res.send('Successful GET request of directors information.');
+    const director = Directors.find(g => g.name === req.params.directorName)
+    res.json(director || []);
 });
 
 // Allow new users to register
