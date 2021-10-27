@@ -1,11 +1,12 @@
 
-
 //Require
 const express = require('express');
 
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 app = express();
+
+// Serving static files
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 //the fs module to write to a text file).
 app.use(morgan('common'));
 app.get('/', (req, res) => {
-    res.send('Welcome to mycomedyFlix app!');
+    res.send('Welcome to MycomedyFlix app!!!');
 });
 
 app.get('/secreturl', (req, res) => {
@@ -28,16 +29,16 @@ let topTenMovies = [
         genre:[
             {
                 id:1,
-                name:['Comedy'],
+                name:'Comedy',
                 description:'   '
             },
             {
-                id:2,
-                name:['Music'],
+                id:6,
+                name:'Music',
                 description:'   '
             },
             {
-                id:3,
+                id:4,
                 name:'Romance',
                 description:'   '
             },
@@ -45,7 +46,7 @@ let topTenMovies = [
         director:[
             {
                 id:1,
-                name:['Jason Moore '],
+                name:'Jason Moore ',
                 biography:'   '
             },
             ],
@@ -56,12 +57,12 @@ let topTenMovies = [
         genre:[
         {
             id:1,
-            name:['Comedy'],
+            name:'Comedy',
             description:'   '
         },
         {
             id:2,
-            name:['Action'],
+            name:'Action',
             description:'   '
         },
         {
@@ -84,12 +85,12 @@ let topTenMovies = [
         genre:[
             {
                 id:1,
-                name:['Comedy'],
+                name:'Comedy',
                 description:'   '
             },
             {
                 id:2,
-                name:['Action'],
+                name:'Action',
                 description:'   '
             },
             ],
@@ -107,12 +108,12 @@ let topTenMovies = [
         genre:[
             {
                 id:1,
-                name:['Comedy'],
+                name:'Comedy',
                 description:'   '
             },
             {
-                id:2,
-                name:['Romance'],
+                id:4,
+                name:'Romance',
                 description:'   '
             },
             ],
@@ -130,12 +131,12 @@ let topTenMovies = [
         genre:[
             {
                 id:1,
-                name:['Comedy'],
+                name:'Comedy',
                 description:'   '
             },
             {
-                id:2,
-                name:['Romance'],
+                id:4,
+                name:'Romance',
                 description:'   '
             },
             ],
@@ -153,12 +154,12 @@ let topTenMovies = [
         genre:[
             {
                 id:1,
-                name:['Comedy'],
+                name:'Comedy',
                 description:'   '
             },
             {
                 id:2,
-                name:['Action'],
+                name:'Action',
                 description:'   '
             },
             ],
@@ -176,12 +177,12 @@ let topTenMovies = [
         genre:[
             {
                 id:1,
-                name:['Comedy'],
+                name:'Comedy',
                 description:'   '
             },
             {
                 id:2,
-                name:['Action'],
+                name:'Action',
                 description:'   '
             },
             ],
@@ -199,12 +200,12 @@ let topTenMovies = [
         genre:[
             {
                 id:1,
-                name:['Comedy'],
+                name:'Comedy',
                 description:'   '
             },
             {
-                id:2,
-                name:['Adventure'],
+                id:3,
+                name:'Adventure',
                 description:'   '
             },
             ],
@@ -222,12 +223,12 @@ let topTenMovies = [
         genre:[
             {
                 id:1,
-                name:['Comedy'],
+                name:'Comedy',
                 description:'   '
             },
             {
                 id:2,
-                name:['Adventure'],
+                name:'Adventure',
                 description:'   '
             },
             ],
@@ -245,30 +246,71 @@ let topTenMovies = [
         genre:[
             {
                 id:1,
-                name:['Comedy'],
+                name:'Comedy',
                 description:'   '
             },
             {
-                id:2,
-                name:['Documentary'],
+                id:5,
+                name:'Documentary',
                 description:'   '
             },
             ],
         director:[
             {
-                id:1,
-                name:['Leslie Small'],
-                biography:'   '
+                id:2,
+                name:'Leslie Small',
+                birth_year: '',
+                death_year: '',
+                bio: '',
             },
             ],
     }
 ];
 
-//Created a topTenMovies list : GET requests
-app.get('/', (req, res) => {
-    res.send('Welcome to mycomedyFlix app!');
-});
+const Genres = [
+    {
+        id:1,
+        name:'Comedy',
+        description:'   '
+    },
+    {
+        id:2,
+        name:'Action',
+        description:'   '
+    },
+    {
+        id:3,
+        name:'Adventure',
+        description:'   '
+    },
+    {
+        id:4,
+        name:'Romance',
+        description:'   '
+    },
+    {
+        id:5,
+        name:'Documentary',
+        description:'   '
+    },
+    {
+        id:6,
+        name:'Music',
+        description:'   '
+    },
+];
 
+const Directors = [
+    {
+        id: 1,
+        name: 'Jason',
+        birth_year: '',
+        death_year: '',
+        bio: '',
+    },
+];
+
+//Created a topTenMovies list : GET requests
 app.get('/documentation', (req, res) => {                  
     res.sendFile('public/documentation.html', { root: __dirname });
 });
@@ -283,36 +325,25 @@ app.get('/movies/:title', (req, res) => {
     res.send('Successful GET request returning movie by title');
 });
 
-// Get data about a movie by year
-app.get('/movies/:year', (req, res) => {
-    res.send('Successful GET request returning movie by year');
-});
-
 // Get data about movies by genre by name
-app.get('/genres/:id/name', (req, res) => {
-    res.send('Successful GET request returning movie by name of genre');
+app.get('/genres/:genreName', (req, res) => {
+    const genre = Genres.find(g => g.name === req.params.genreName)
+    res.json(genre || []);
 });
 
-// Get data about movies by genre by name
-app.get('/genres/:id/genreName', (req, res) => {
-    let movie = topTenMovies.find(m => m.genre === req.params.genreName)
-    res.json(movie)
+app.get('/genres/id/:id', (req, res) => {
+    const genre = Genres.find(g => g.id === parseInt(req.params.id))
+    res.json(genre || []);
 });
 
-
-// Get data about movies by genre by description
-app.get('/genres/:id/description', (req, res) => {
-    res.send('Successful GET request returning movie by description of genre');
-});
-
+// TODO: do the similar thing whatwe did for Genre
+// Create Director array
+// Modifiy movies's director attributes
+// Here add the logic similar to line 330 & 331 (genreName)
 //Get data of a director's information by name
-app.get('/directors/:id/name', (req, res) => {
+app.get('/directors/:directorName', (req, res) => {
+    console.log(req.params.directorName)
     res.send('Successful GET request of directors information.');
-});
-
-//Get data of a director's information by biography
-app.get('/directors/:id/biography', (req, res) => {
-    res.send('Successful GET request of directors biography.');
 });
 
 // Allow new users to register
@@ -339,9 +370,6 @@ app.delete('/users/:id/favorites', (req, res) => {
 app.delete('/users/:id', (req, res) => {
     res.send('Successful DELETE a user!');
 });
-
-// Serving static files
-app.use(express.static('public'));
 
 // error-handling middleware function that will log all application-level errors to the terminal
 app.use((err, req, res, next) => {
