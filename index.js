@@ -1,9 +1,8 @@
-
 //Require
 const express = require('express');
-
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+uuid = require('uuid');
 app = express();
 
 // Serving static files
@@ -20,7 +19,6 @@ app.get('/', (req, res) => {
 app.get('/secreturl', (req, res) => {
     res.send('This is a secret url with super top-secret content.');
 });
-
 
 let topTenMovies = [
     {
@@ -414,16 +412,57 @@ app.get('/genres/:genreName', (req, res) => {
     res.json(genre);
 });
 
-// Get data about movies by genre by id
-app.get('/genres/id/:id', (req, res) => {
-    const genre = Genres.find(g => g.id === parseInt(req.params.id))
-    res.json(genre || []);
-});
-
 // Get data about movies by directors by name
 app.get('/directors/:directorName', (req, res) => {
     const director = Directors.find(g => g.name === req.params.directorName)
     res.json(director || []);
+});
+
+// Adds data on a new user to our list of users.
+let Users = [
+    {
+                id:1,
+                username:'john_smith',
+                email:'john@example.com',
+                name: "John Smith",
+                password:'XXXXXX',
+                state: "active",
+    },
+    {
+                id:2,
+                username:'Chris_Tony',
+                email:'ctony@example.com',
+                name: "Chris Tony",
+                password:'XXXXX',
+                state: "active",
+    },   
+];
+
+app.post('/users/id/:id', (req, res) => {
+    let newUser = req.body;
+    if (!newUser.id) {
+        const user = Users.find(g =>  g.id === parseInt(req.params.id))
+    res.json(user || []);
+    res.status(400).send(user);
+        } else {
+    newUser.id = uuid.v4();
+    Users.push(newUser);
+    res.status(201).send(newUser);
+        }
+});
+
+//  Allow existing user to deregister by ID
+app.delete('/users/:id', (req, res) => {
+    let user = Users.find((user) => { return user.id ===  parseInt(req.params.id) });
+        if (user) {
+        Users = Users.filter((obj) => { return obj.id !==  parseInt(req.params.id)});
+    res.status(201).send('user ' + req.params.id + ' was deleted.');
+        }
+});
+
+// Allow user to add a movie to their favorite movies list
+app.patch('/users/:id/favorites', (req, res) => {
+    res.send('Successful POST to the server a favorite movie on the user list.');
 });
 
 // Allow new users to register
@@ -436,19 +475,9 @@ app.put('/users/:id', (req, res) => {
     res.send('Successful PUT to the server a user information.');
 });
 
-// Allow user to add a movie to their favorite movies list
-app.patch('/users/:id/favorites', (req, res) => {
-    res.send('Successful POST to the server a favorite movie on the user list.');
-});
-
 // Allow user to remove a movie from their favorite  movies list
-app.delete('/users/:id/favorites', (req, res) => {
+app.delete('/users/id/:id/favorites', (req, res) => {
     res.send('Successful DELETE to the server a favorite movie on the user list.');
-});
-
-// Allow existing user to deregister
-app.delete('/users/:id', (req, res) => {
-    res.send('Successful DELETE a user!');
 });
 
 // error-handling middleware function that will log all application-level errors to the terminal
@@ -461,3 +490,7 @@ app.use((err, req, res, next) => {
 app.listen(8080, () =>{
     console.log('Your app is listening on port 8080.');
 });
+
+
+
+
