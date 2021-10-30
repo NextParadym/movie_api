@@ -461,7 +461,7 @@ app.delete('/users/:id', (req, res) => {
 });
 
 // Allow user to add a movie to their favorite movies list
-app.patch('/users/:id/favorites', (req, res) => {
+app.patch('/movies/:id', (req, res) => {
     res.send('Successful POST to the server a favorite movie on the user list.');
 });
 
@@ -471,12 +471,12 @@ app.post('/register', (req, res) => {
 });
 
 // Allow user to update their user info
-app.put('/users/:id', (req, res) => {
+app.put('/users/:userName', (req, res) => {
     res.send('Successful PUT to the server a user information.');
 });
 
 // Allow user to remove a movie from their favorite  movies list
-app.delete('/users/id/:id/favorites', (req, res) => {
+app.delete('/movies/id/:id', (req, res) => {
     res.send('Successful DELETE to the server a favorite movie on the user list.');
 });
 
