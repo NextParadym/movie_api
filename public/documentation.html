@@ -87,7 +87,7 @@
       </tr>
       <tr>
         <td>PATCH</td>
-        <td>/users/:id/:favorites</td>
+        <td>/movies/:id</td>
         <td>Allow user to add a movie to the list of favorites.</td>
         <td>None.</td>
         <td>Text Data indicataing 'Successful POST to the server a favorite movie on the user list.' .</td>
@@ -109,7 +109,7 @@
       </tr>
       <tr>
         <td>PUT</td>
-        <td>/users/:id/:user_info</td>
+        <td>/users/:userName</td>
         <td>Allow user to update the user info</td>
         <td>A JSON Object holding data about the users updated information structured like:
           <pre>{
@@ -124,7 +124,7 @@
       </tr>
       <tr>
         <td>DELETE</td>
-        <td>/users/:id/:favorites</td>
+        <td>/movies/id/:id</td>
         <td>All user to remove a movie from the list of favorites.</td>
         <td>None.</td>
         <td>Text Data indicataing 'Successful DELETE to the server a favorite movie on the user list.'.</td>
