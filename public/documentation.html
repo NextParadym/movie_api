@@ -54,48 +54,40 @@
         <td>/genres/:genreName</td>
         <td>Return data by genre name.</td>
         <td>None.</td>
-        <td>Return JSON data about genres by name.</td>
+        <td>>Return data about a genre by name.</td>
       </tr>
       <tr>
         <td>GET</td>
         <td>/directors/:directorName</td>
         <td>Return data about a director by name.</td>
         <td>None.</td>
-        <td>Return JSON data about a directors by name.' .</td>
-      </tr>
-      <tr>
-        <td>POST</td>
-        <td>/users/usersid/:id'</td>
-        <td>Return added data on a new user to list of users</td>
-        <td>A JSON Object holding data about the users structured like:
-          <pre>{
-            id:1,
-            username:'john_smith',
-            email:'john@example.com',
-            name: "John Smith",
-            password:'XXXXXX',
-            state: "active", </pre>
-          },</td>
-        <td>JSON Data indicating added data on a new user to list of users.' .</td>
+        <td>Text Data indicating 'Successful GET request of directors information.' .</td>
       </tr>
       <tr>
         <td>DELETE</td>
-        <td>/users/:id</td>
+        <td>/users/:userID</td>
         <td>Allow existing user to deregister.</td>
         <td>None.</td>
-        <td> Text Data indicating 'The Deleted User!'.</td>
+        <td> Text Data indicataing 'Successful DELETE a user!' .</td>
       </tr>
       <tr>
         <td>PATCH</td>
-        <td>/users/:id/favourites</td>
+        <td>/users/:userID/favorites/:movieName</td>
         <td>Allow user to add a movie to the list of favorites.</td>
         <td>None.</td>
-        <td>Text Data indicataing 'Successful POST to the server a favorite movie on the user list.' .</td>
+        <td> Text Data indicataing 'Successful POST to the server a favorite movie on the user list.' .</td>
       </tr>
       <tr>
         <td>POST</td>
         <td>/register</td>
         <td>Allow new users to register.</td>
+
+        <td>Text Data indicating 'Successful POST to the server a new user registeration.' .</td>
+      </tr>
+      <tr>
+        <td>PUT</td>
+        <td>/users/:userName'</td>
+        <td>Allow user to update the user info</td>
         <td>A JSON Object holding data about the users structured like:
           <pre>{
             id:1,
@@ -105,29 +97,15 @@
             password:'XXXXXX',
             state: "active", </pre>
           },</td>
-        <td>Text Data indicating 'Successful POST to the server a new user registeration.' .</td>
-      </tr>
-      <tr>
-        <td>PUT</td>
-        <td>/users/:userName</td>
-        <td>Allow user to update the user info</td>
-        <td>A JSON Object holding data about the users updated information structured like:
-          <pre>{
-            id:1,
-            username:'john_smith',
-            email:'john@example.com',
-            name: "John Smith",
-            password:'XXXXXX',
-            state: "active", </pre>
-          },</td>
+        <td>JSON Data indicating added data on a new user to our list of users.' .</td>
         <td>Text Data indicataing 'Successful PUT to the server a user information.' .</td>
       </tr>
       <tr>
         <td>DELETE</td>
-        <td>/users/:id/favourites</td>
+        <td>/users/:userID/favorites/:movieID</td>
         <td>All user to remove a movie from the list of favorites.</td>
         <td>None.</td>
-        <td>Text Data indicataing 'Successful DELETE to the server a favorite movie on the user list.'.</td>
+        <td> Text Data indicataing 'Successful DELETE to the server a favorite movie on the user list.'.</td>
       </tr>
     </tbody>
   </table>
