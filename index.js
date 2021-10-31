@@ -22,28 +22,29 @@ app.get('/secreturl', (req, res) => {
 
 let topTenMovies = [
     {
+        movieID:1,
         title: 'Pitch Perfect',
         year: '2012',
         genre:[
             {
-                id:1,
+                genreID:1,
                 name:'Comedy',
                 description:'   '
             },
             {
-                id:6,
+                genreID:6,
                 name:'Music',
                 description:'   '
             },
             {
-                id:4,
+                genreID:4,
                 name:'Romance',
                 description:'   '
             },
             ],
         director:[
             {
-                id:1,
+                directorID:1,
                 name:'Jason Moore ',
                 birth_year: '',
                 death_year: '',
@@ -52,28 +53,29 @@ let topTenMovies = [
             ],
     },
     {
+        movieID:2,
         title: 'Solo: A Star Wars Story',
         year: '2018',
         genre:[
         {
-            id:1,
+            genreID:1,
             name:'Comedy',
             description:'   '
         },
         {
-            id:2,
+            genreID:2,
             name:'Action',
             description:'   '
         },
         {
-            id:3,
+            genreID:3,
             name:'Adventure',
             description:'   '
         },
         ],
         director:[
             {
-                id:2,
+                directorID:2,
                 name:'Ron Howard',
                 birth_year: '',
                 death_year: '',
@@ -82,23 +84,24 @@ let topTenMovies = [
             ],
     },
     {
+        movieID: 3,
         title: 'Detective MJ: Shadow of a Hero',
         year: '2020',
         genre:[
             {
-                id:1,
+                genreID:1,
                 name:'Comedy',
                 description:'   '
             },
             {
-                id:2,
+                genreID:2,
                 name:'Action',
                 description:'   '
             },
             ],
         director:[
             {
-                id:3,
+                directorID:3,
                 name:'Morris D. Small',
                 birth_year: '',
                 death_year: '',
@@ -107,23 +110,24 @@ let topTenMovies = [
             ],
     },
     {
+        movieID:4,
         title: 'Mum, Dad, Meet Sam',
         year: '2014',
         genre:[
             {
-                id:1,
+                genreID:1,
                 name:'Comedy',
                 description:'   '
             },
             {
-                id:4,
+                genreID:4,
                 name:'Romance',
                 description:'   '
             },
             ],
         director:[
             {
-                id:4,
+                directorID:4,
                 name:'Tony Sebastian Ukpo',
                 birth_year: '',
                 death_year: '',
@@ -132,23 +136,24 @@ let topTenMovies = [
             ],
     },
     {
+        movieID:5,
         title: 'The Nutty Professor',
         year: '1963',
         genre:[
             {
-                id:1,
+                genreID: 1,
                 name:'Comedy',
                 description:'   '
             },
             {
-                id:4,
+                genreID: 4,
                 name:'Romance',
                 description:'   '
             },
             ],
         director:[
             {
-                id:5,
+                directorID:5,
                 name:'Jerry Lewis',
                 birth_year: '',
                 death_year: '',
@@ -157,23 +162,24 @@ let topTenMovies = [
             ],
     },
     {
+        movieID:6,
         title: 'Game Over, Man!',
         year: '2018',
         genre:[
             {
-                id:1,
+                genreID:1,
                 name:'Comedy',
                 description:'   '
             },
             {
-                id:2,
+                genreID:2,
                 name:'Action',
                 description:'   '
             },
             ],
         director:[
             {
-                id:6,
+                directorID:6,
                 name:'Kyle Newacheck',
                 birth_year: '',
                 death_year: '',
@@ -182,23 +188,24 @@ let topTenMovies = [
             ],
     },
     {
+        movieID:7,
         title: 'No Holds Bars Comedy Presents: Pilot',
         year: '2012',
         genre:[
             {
-                id:1,
+                genreID:1,
                 name:'Comedy',
                 description:'   '
             },
             {
-                id:2,
+                genreID:2,
                 name:'Action',
                 description:'   '
             },
             ],
         director:[
             {
-                id:7,
+                directorID:7,
                 name:'Derrick Comedy',
                 birth_year: '',
                 death_year: '',
@@ -207,23 +214,24 @@ let topTenMovies = [
             ],
     },
     {
+        movieID:8,
         title: 'The Day After Quarantine',
         year: '2021',
         genre:[
             {
-                id:1,
+                genreID:1,
                 name:'Comedy',
                 description:'   '
             },
             {
-                id:3,
+                genreID:3,
                 name:'Adventure',
                 description:'   '
             },
             ],
         director:[
             {
-                id:8,
+                directorID:8,
                 name:'Gary Trousdale',
                 birth_year: '',
                 death_year: '',
@@ -232,23 +240,24 @@ let topTenMovies = [
             ],
     },
     {
+        movieID:9,
         title: 'No Filter the Film',
         year: '2015',
         genre:[
             {
-                id:1,
+                genreID:1,
                 name:'Comedy',
                 description:'   '
             },
             {
-                id:2,
+                genreID:2,
                 name:'Adventure',
                 description:'   '
             },
             ],
         director:[
             {
-                id:9,
+                directorID:9,
                 name:'Barry Williams',
                 birth_year: '',
                 death_year: '',
@@ -257,23 +266,24 @@ let topTenMovies = [
             ],
     },
     {
+        movieID:10,
         title: 'All Star Comedy Jam',
         year: '2009',
         genre:[
             {
-                id:1,
+                genreID:1,
                 name:'Comedy',
                 description:'   '
             },
             {
-                id:5,
+                genreID:5,
                 name:'Documentary',
                 description:'   '
             },
             ],
         director:[
             {
-                id:10,
+                directorID:10,
                 name:'Leslie Small',
                 birth_year: '',
                 death_year: '',
@@ -286,32 +296,32 @@ let topTenMovies = [
 // Genre objects
 const Genres = [
     {
-        id:1,
+        genreID:1,
         name:'Comedy',
         description:'   ',
     },
     {
-        id:2,
+        genreID:2,
         name:'Action',
         description:'   ',
     },
     {
-        id:3,
+        genreID:3,
         name:'Adventure',
         description:'   ',
     },
     {
-        id:4,
+        genreID:4,
         name:'Romance',
         description:'   ',
     },
     {
-        id:5,
+        genreID:5,
         name:'Documentary',
         description:'   ',
     },
     {
-        id:6,
+        genreID:6,
         name:'Music',
         description:'   ',
     },
@@ -320,70 +330,70 @@ const Genres = [
 // Director objects
 const Directors = [
     {
-        id: 1,
+        directorID: 1,
         name: 'Jason Moore',
         birth_year: '',
         death_year: '',
         bio: '',
     },
     {
-        id: 2,
+        directorID: 2,
         name: 'Ron Howard',
         birth_year: '',
         death_year: '',
         bio: '',
     },
     {
-        id: 3,
+        directorID: 3,
         name: 'Morris D. Small',
         birth_year: '',
         death_year: '',
         bio: '',
     },
     {
-        id: 4,
+        directorID: 4,
         name: 'Tony Sebastian Ukpo',
         birth_year: '',
         death_year: '',
         bio: '',
     },
     {
-        id: 5,
+        directorID: 5,
         name: 'Jerry Lewis',
         birth_year: '',
         death_year: '',
         bio: '',
     },
     {
-        id: 6,
+        directorID: 6,
         name: 'Kyle Newacheck',
         birth_year: '',
         death_year: '',
         bio: '',
     },
     {
-        id: 7,
+        directorID: 7,
         name: 'Derrick Comedy',
         birth_year: '',
         death_year: '',
         bio: '',
     },
     {
-        id: 8,
+        directorID: 8,
         name: 'Gary Trousdale',
         birth_year: '',
         death_year: '',
         bio: '',
     },
     {
-        id: 9,
+        directorID: 9,
         name: 'Barry Williams',
         birth_year: '',
         death_year: '',
         bio: '',
     },
     {
-        id: 10,
+        directorID: 10,
         name: 'Leslie Small',
         birth_year: '',
         death_year: '',
@@ -418,10 +428,10 @@ app.get('/directors/:directorName', (req, res) => {
     res.json(director || []);
 });
 
-// Add data on a new user to our list of users.
+// Adding users to list of users.
 let Users = [
     {
-                id:1,
+                userID:1,
                 username:'john_smith',
                 email:'john@example.com',
                 name: "John Smith",
@@ -429,7 +439,7 @@ let Users = [
                 state: "active",
     },
     {
-                id:2,
+                userID:2,
                 username:'Chris_Tony',
                 email:'ctony@example.com',
                 name: "Chris Tony",
@@ -438,30 +448,30 @@ let Users = [
     },   
 ];
 
-app.post('/users/usersid/:id', (req, res) => {
+app.post('/users', (req, res) => {
     let newUser = req.body;
-    if (!newUser.id) {
-        const user = Users.find(g =>  g.id === parseInt(req.params.id))
+    if (!newUser.userID) {
+        const user = Users.find(g =>  g.userID === parseInt(req.params.userID))
     res.json(user || []);
     res.status(400).send(user);
         } else {
-    newUser.id = uuid.v4();
+    newUser.userID = uuid.v4();
     Users.push(newUser);
     res.status(201).send(newUser);
         }
 });
 
 //  Allow existing user to deregister by ID
-app.delete('/users/:id', (req, res) => {
-    let user = Users.find((user) => { return user.id ===  parseInt(req.params.id) });
+app.delete('/users/:userID', (req, res) => {
+    let user = Users.find((user) => { return user.userID ===  parseInt(req.params.userID) });
         if (user) {
-        Users = Users.filter((obj) => { return obj.id !==  parseInt(req.params.id)});
-    res.status(201).send('user ' + req.params.id + ' was deleted.');
+        Users = Users.filter((obj) => { return obj.userID !==  parseInt(req.params.userID)});
+    res.status(201).send('user ' + req.params.userID + ' was deleted.');
         }
 });
 
 // Allow user to add a movie to their favorite movies list
-app.patch('/users/:id/favourites', (req, res) => {
+app.patch('/users/:userID/favorites/:movieName', (req, res) => {
     res.send('Successful POST to the server a favorite movie on the user list.');
 });
 
@@ -476,7 +486,7 @@ app.put('/users/:userName', (req, res) => {
 });
 
 // Allow user to remove a movie from their favorite  movies list
-app.delete('/users/:id/favourites', (req, res) => {
+app.delete('/users/:userID/favorites/:movieID', (req, res) => {
     res.send('Successful DELETE to the server a favorite movie on the user list.');
 });
 
