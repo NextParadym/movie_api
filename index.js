@@ -418,7 +418,7 @@ app.get('/directors/:directorName', (req, res) => {
     res.json(director || []);
 });
 
-// Adds data on a new user to our list of users.
+// Add data on a new user to our list of users.
 let Users = [
     {
                 id:1,
@@ -438,7 +438,7 @@ let Users = [
     },   
 ];
 
-app.post('/users/id/:id', (req, res) => {
+app.post('/users/usersid/:id', (req, res) => {
     let newUser = req.body;
     if (!newUser.id) {
         const user = Users.find(g =>  g.id === parseInt(req.params.id))
@@ -490,7 +490,4 @@ app.use((err, req, res, next) => {
 app.listen(8080, () =>{
     console.log('Your app is listening on port 8080.');
 });
-
-
-
 
