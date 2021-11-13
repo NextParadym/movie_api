@@ -26,11 +26,11 @@
   <table>
     <thead>
       <tr>
-        <th>Request</th>
+        <th>HTTP Method</th>
         <th>URL</th>
         <th>Responses</th>
-        <th>Request body format</th>
-        <th>Response format</th>
+        <th>Request Body Format</th>
+        <th>Response Body Format</th>
       </tr>
     </thead>
 
@@ -81,7 +81,6 @@
         <td>POST</td>
         <td>/register</td>
         <td>Allow new users to register.</td>
-
         <td>Text Data indicating 'Successful POST to the server a new user registeration.' .</td>
       </tr>
       <tr>
@@ -97,12 +96,11 @@
             password:'XXXXXX',
             state: "active", </pre>
           },</td>
-        <td>JSON Data indicating added data on a new user to our list of users.' .</td>
         <td>Text Data indicataing 'Successful PUT to the server a user information.' .</td>
       </tr>
       <tr>
         <td>DELETE</td>
-        <td>/users/:userID/favorites/:movieID</td>
+        <td>/users/:userID/favorites/:movieName</td>
         <td>All user to remove a movie from the list of favorites.</td>
         <td>None.</td>
         <td> Text Data indicataing 'Successful DELETE to the server a favorite movie on the user list.'.</td>

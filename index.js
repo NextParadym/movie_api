@@ -1,3 +1,4 @@
+
 //Require
 const express = require('express');
 const morgan = require('morgan');
@@ -486,7 +487,7 @@ app.put('/users/:userName', (req, res) => {
 });
 
 // Allow user to remove a movie from their favorite  movies list
-app.delete('/users/:userID/favorites/:movieID', (req, res) => {
+app.delete('/users/:userID/favorites/:movieName', (req, res) => {
     res.send('Successful DELETE to the server a favorite movie on the user list.');
 });
 
