@@ -68,8 +68,8 @@ app.get('/movies/:title', (req, res) => {
 
 //GET
 //Gets info about a specific genre
-app.get('/movies/genre/:name', (req, res) => {
-    Movies.findOne({ "Genre.Name" : req.params.name })
+app.get('/genres/genre/:name', (req, res) => {
+    Genres.findOne({ "Genre.Name" : req.params.name })
     .then((genre) => {
         res.json(genre);
     })
@@ -81,8 +81,8 @@ app.get('/movies/genre/:name', (req, res) => {
 
 //GET
 //Gets information about a specific director
-app.get('/movies/director/:name', (req, res) => {
-    Movies.findOne({ "Director.Name" : req.params.name })
+app.get('/directors/director/:name', (req, res) => {
+    Directors.findOne({ "Director.Name" : req.params.name })
     .then((director) => {
         res.json(director);
     })
@@ -194,41 +194,21 @@ app.post('/users/:Username/movies/:MovieID', (req, res) => {
     });
 });
 
-//DELETE
-//Allow users to remove a movie from their list of favorites
-app.delete('/users/:ID/:deleteFavorite', (req, res) => {
-    Users.findOneAndUpdate({ Username: req.params.id }, {
+// Remove a movie to a user's list of favorites
+app.delete('/users/:Username/movies/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({ Username : req.params.Username }, {
         $pull: { FavoriteMovies: req.params.MovieID }
     },
-    { new: true }, // This line makes sure that the updated document is returned
+     { new: true }, // This line makes sure that the updated document is returned
     (err, updatedUser) => {
-    if (err) {
+        if (err) {
         console.error(err);
         res.status(500).send('Error: ' + err);
     } else {
         res.json(updatedUser);
     }
-});
-});
-
-
-// Remove a movie to a user's list of favorites
-app.delete('/users/:Username/movies/:MovieID', (req, res) => {
-    Users.findOneAndUpdate({ Username : req.params.Username }, {
-       $pull: { FavoriteMovies: req.params.MovieID }
-     },
-     { new: true }, // This line makes sure that the updated document is returned
-    (err, updatedUser) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-      } else {
-        res.json(updatedUser);
-      }
     });
-  });
-  
-
+});
 
 //DELETE
 // Allow existing users to deregister
