@@ -1,494 +1,250 @@
 
-//Require
-const express = require('express');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
+// Require
+const express = require('express'),
+bodyParser = require('body-parser'),
 uuid = require('uuid');
-app = express();
+
+const morgan = require('morgan');
+const app = express();
+
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+const Directors = Models.Director;
+const Genres = Models.Genre;
+
+mongoose.connect('mongodb://localhost:27017/myComedyFlix', {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // Serving static files
 app.use(express.static('public'));
-app.use(bodyParser.json());
 
 // Use the Morgan middleware library to log all requests (instead of using 
-//the fs module to write to a text file).
+
 app.use(morgan('common'));
+
+// default text response when at /
 app.get('/', (req, res) => {
-    res.send('Welcome to MycomedyFlix app!!!');
-});
-
-app.get('/secreturl', (req, res) => {
-    res.send('This is a secret url with super top-secret content.');
-});
-
-let topTenMovies = [
-    {
-        movieID:1,
-        title: 'Pitch Perfect',
-        year: '2012',
-        genre:[
-            {
-                genreID:1,
-                name:'Comedy',
-                description:'   '
-            },
-            {
-                genreID:6,
-                name:'Music',
-                description:'   '
-            },
-            {
-                genreID:4,
-                name:'Romance',
-                description:'   '
-            },
-            ],
-        director:[
-            {
-                directorID:1,
-                name:'Jason Moore ',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    },
-    {
-        movieID:2,
-        title: 'Solo: A Star Wars Story',
-        year: '2018',
-        genre:[
-        {
-            genreID:1,
-            name:'Comedy',
-            description:'   '
-        },
-        {
-            genreID:2,
-            name:'Action',
-            description:'   '
-        },
-        {
-            genreID:3,
-            name:'Adventure',
-            description:'   '
-        },
-        ],
-        director:[
-            {
-                directorID:2,
-                name:'Ron Howard',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    },
-    {
-        movieID: 3,
-        title: 'Detective MJ: Shadow of a Hero',
-        year: '2020',
-        genre:[
-            {
-                genreID:1,
-                name:'Comedy',
-                description:'   '
-            },
-            {
-                genreID:2,
-                name:'Action',
-                description:'   '
-            },
-            ],
-        director:[
-            {
-                directorID:3,
-                name:'Morris D. Small',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    },
-    {
-        movieID:4,
-        title: 'Mum, Dad, Meet Sam',
-        year: '2014',
-        genre:[
-            {
-                genreID:1,
-                name:'Comedy',
-                description:'   '
-            },
-            {
-                genreID:4,
-                name:'Romance',
-                description:'   '
-            },
-            ],
-        director:[
-            {
-                directorID:4,
-                name:'Tony Sebastian Ukpo',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    },
-    {
-        movieID:5,
-        title: 'The Nutty Professor',
-        year: '1963',
-        genre:[
-            {
-                genreID: 1,
-                name:'Comedy',
-                description:'   '
-            },
-            {
-                genreID: 4,
-                name:'Romance',
-                description:'   '
-            },
-            ],
-        director:[
-            {
-                directorID:5,
-                name:'Jerry Lewis',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    },
-    {
-        movieID:6,
-        title: 'Game Over, Man!',
-        year: '2018',
-        genre:[
-            {
-                genreID:1,
-                name:'Comedy',
-                description:'   '
-            },
-            {
-                genreID:2,
-                name:'Action',
-                description:'   '
-            },
-            ],
-        director:[
-            {
-                directorID:6,
-                name:'Kyle Newacheck',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    },
-    {
-        movieID:7,
-        title: 'No Holds Bars Comedy Presents: Pilot',
-        year: '2012',
-        genre:[
-            {
-                genreID:1,
-                name:'Comedy',
-                description:'   '
-            },
-            {
-                genreID:2,
-                name:'Action',
-                description:'   '
-            },
-            ],
-        director:[
-            {
-                directorID:7,
-                name:'Derrick Comedy',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    },
-    {
-        movieID:8,
-        title: 'The Day After Quarantine',
-        year: '2021',
-        genre:[
-            {
-                genreID:1,
-                name:'Comedy',
-                description:'   '
-            },
-            {
-                genreID:3,
-                name:'Adventure',
-                description:'   '
-            },
-            ],
-        director:[
-            {
-                directorID:8,
-                name:'Gary Trousdale',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    },
-    {
-        movieID:9,
-        title: 'No Filter the Film',
-        year: '2015',
-        genre:[
-            {
-                genreID:1,
-                name:'Comedy',
-                description:'   '
-            },
-            {
-                genreID:2,
-                name:'Adventure',
-                description:'   '
-            },
-            ],
-        director:[
-            {
-                directorID:9,
-                name:'Barry Williams',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    },
-    {
-        movieID:10,
-        title: 'All Star Comedy Jam',
-        year: '2009',
-        genre:[
-            {
-                genreID:1,
-                name:'Comedy',
-                description:'   '
-            },
-            {
-                genreID:5,
-                name:'Documentary',
-                description:'   '
-            },
-            ],
-        director:[
-            {
-                directorID:10,
-                name:'Leslie Small',
-                birth_year: '',
-                death_year: '',
-                bio: '',
-            },
-            ],
-    }
-];
-
-// Genre objects
-const Genres = [
-    {
-        genreID:1,
-        name:'Comedy',
-        description:'   ',
-    },
-    {
-        genreID:2,
-        name:'Action',
-        description:'   ',
-    },
-    {
-        genreID:3,
-        name:'Adventure',
-        description:'   ',
-    },
-    {
-        genreID:4,
-        name:'Romance',
-        description:'   ',
-    },
-    {
-        genreID:5,
-        name:'Documentary',
-        description:'   ',
-    },
-    {
-        genreID:6,
-        name:'Music',
-        description:'   ',
-    },
-];
-
-// Director objects
-const Directors = [
-    {
-        directorID: 1,
-        name: 'Jason Moore',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-    {
-        directorID: 2,
-        name: 'Ron Howard',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-    {
-        directorID: 3,
-        name: 'Morris D. Small',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-    {
-        directorID: 4,
-        name: 'Tony Sebastian Ukpo',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-    {
-        directorID: 5,
-        name: 'Jerry Lewis',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-    {
-        directorID: 6,
-        name: 'Kyle Newacheck',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-    {
-        directorID: 7,
-        name: 'Derrick Comedy',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-    {
-        directorID: 8,
-        name: 'Gary Trousdale',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-    {
-        directorID: 9,
-        name: 'Barry Williams',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-    {
-        directorID: 10,
-        name: 'Leslie Small',
-        birth_year: '',
-        death_year: '',
-        bio: '',
-    },
-];
-
+    res.send(" welcome to My Comedy Movie Flix!");
+    });
 //Created a topTenMovies list : GET requests
 app.get('/documentation', (req, res) => {                  
     res.sendFile('public/documentation.html', { root: __dirname });
 });
 
-// Get the list of data about ALL movies
+//GET
+// Get the list of ALL movies-return JSON object when at /movies
 app.get('/movies', (req, res) => {
-    res.json(topTenMovies);
+    Movies.find()
+    .then((movie) => {
+    res.status(201).json(movie);
+    })
+    .catch((err) => {
+    console.error(err);
+    res.status(400).send('Error: ' + err);
+    });
 });
 
-// Get data about a movie by title
+//GET
+//Gets movie by title
 app.get('/movies/:title', (req, res) => {
-    res.send('Successful GET request returning movie by title');
+    Movies.findOne({ Title : req.params.title })
+    .then((movie) => {
+        res.json(movie);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
 });
 
-// Get data about movies by genre by name
-app.get('/genres/:genreName', (req, res) => {
-    const genre = Genres.find(g => g.name === req.params.genreName)
-    res.json(genre);
+//GET
+//Gets info about a specific genre
+app.get('/movies/genre/:name', (req, res) => {
+    Movies.findOne({ "Genre.Name" : req.params.name })
+    .then((genre) => {
+        res.json(genre);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
 });
 
-// Get data about movies by directors by name
-app.get('/directors/:directorName', (req, res) => {
-    const director = Directors.find(g => g.name === req.params.directorName)
-    res.json(director || []);
+//GET
+//Gets information about a specific director
+app.get('/movies/director/:name', (req, res) => {
+    Movies.findOne({ "Director.Name" : req.params.name })
+    .then((director) => {
+        res.json(director);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
+    });
+
+//GET
+// Get all users
+app.get('/users', (req, res) => {
+    Users.find()
+    .then((users) => {
+        res.status(201).json(users);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
 });
 
-// Adding users to list of users.
-let Users = [
+//GET
+// Get a user by username
+app.get('/users/:Username', (req, res) => {
+    Users.findOne({ Username: req.params.Username })
+    .then((user) => {
+        res.json(user);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
+});
+
+//PUT
+// Update a user's info, by username
+/* We’ll expect JSON in this format
+{
+Username: String,
+(required)
+Password: String,
+(required)
+Email: String,
+(required)
+Birthday: Date
+}*/
+app.put('/users/:Username', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
     {
-                userID:1,
-                username:'john_smith',
-                email:'john@example.com',
-                name: "John Smith",
-                password:'XXXXXX',
-                state: "active",
+        Username: req.body.Username,
+        Password: req.body.Password,
+        Email: req.body.Email,
+        Birthday: req.body.Birthday
+    }
     },
-    {
-                userID:2,
-                username:'Chris_Tony',
-                email:'ctony@example.com',
-                name: "Chris Tony",
-                password:'XXXXX',
-                state: "active",
-    },   
-];
-
-app.post('/users', (req, res) => {
-    let newUser = req.body;
-    if (!newUser.userID) {
-        const user = Users.find(g =>  g.userID === parseInt(req.params.userID))
-    res.json(user || []);
-    res.status(400).send(user);
-        } else {
-    newUser.userID = uuid.v4();
-    Users.push(newUser);
-    res.status(201).send(newUser);
-        }
+    { new: true }, // This line makes sure that the updated document is returned
+    (err, updatedUser) => {
+    if(err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    } else {
+        res.json(updatedUser);
+    }
+    });
 });
 
-//  Allow existing user to deregister by ID
-app.delete('/users/:userID', (req, res) => {
-    let user = Users.find((user) => { return user.userID ===  parseInt(req.params.userID) });
-        if (user) {
-        Users = Users.filter((obj) => { return obj.userID !==  parseInt(req.params.userID)});
-    res.status(201).send('user ' + req.params.userID + ' was deleted.');
-        }
-});
-
-// Allow user to add a movie to their favorite movies list
-app.patch('/users/:userID/favorites/:movieName', (req, res) => {
-    res.send('Successful POST to the server a favorite movie on the user list.');
-});
-
+// POST
 // Allow new users to register
-app.post('/register', (req, res) => {
-    res.send('Successful POST to the server a new user registeration.');
+app.post('/users', (req, res) => {
+    console.log(req.body) 
+    Users.findOne({ Username: req.body.Username })
+    .then((user) => {
+    if (user) {
+        return res.status(400).send(req.body.Username + 'already exists');
+    } else {
+        Users.create({
+            Username: req.body.Username,
+            Password: req.body.Password,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday
+        })
+        .then((user) =>{res.status(201).json(user) })
+        .catch((error) => {
+        console.error(error);
+        res.status(500).send('Error: ' + error);
+        })
+    }
+    })
+    .catch((error) => {
+    console.error(error);
+    res.status(500).send('Error: ' + error);
+    });
 });
 
-// Allow user to update their user info
-app.put('/users/:userName', (req, res) => {
-    res.send('Successful PUT to the server a user information.');
+// Add a movie to a user's list of favorites
+app.post('/users/:Username/movies/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.Username }, {
+        $push: { FavoriteMovies: req.params.MovieID }
+    },
+     { new: true }, // This line makes sure that the updated document is returned
+    (err, updatedUser) => {
+    if (err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    } else {
+        res.json(updatedUser);
+    }
+    });
 });
 
-// Allow user to remove a movie from their favorite  movies list
-app.delete('/users/:userID/favorites/:movieName', (req, res) => {
-    res.send('Successful DELETE to the server a favorite movie on the user list.');
+//DELETE
+//Allow users to remove a movie from their list of favorites
+app.delete('/users/:ID/:deleteFavorite', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.id }, {
+        $pull: { FavoriteMovies: req.params.MovieID }
+    },
+    { new: true }, // This line makes sure that the updated document is returned
+    (err, updatedUser) => {
+    if (err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    } else {
+        res.json(updatedUser);
+    }
+});
+});
+
+
+// Remove a movie to a user's list of favorites
+app.delete('/users/:Username/movies/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({ Username : req.params.Username }, {
+       $pull: { FavoriteMovies: req.params.MovieID }
+     },
+     { new: true }, // This line makes sure that the updated document is returned
+    (err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      } else {
+        res.json(updatedUser);
+      }
+    });
+  });
+  
+
+
+//DELETE
+// Allow existing users to deregister
+app.delete('/users/:Username', (req, res) => {
+    Users.findOneAndRemove({ Username: req.params.Username })
+    .then((user) => {
+        if (!user) {
+        res.status(400).send(req.params.Username + ' was not found');
+        } else {
+        res.status(200).send(req.params.Username + ' was deleted.');
+        }
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
 });
 
 // error-handling middleware function that will log all application-level errors to the terminal
