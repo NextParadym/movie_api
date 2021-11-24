@@ -42,68 +42,96 @@
         <td>None.</td>
         <td>JSON Data on list of ALL movies.</td>
       </tr>
+
       <tr>
         <td>GET</td>
         <td>/movies/:title</td>
         <td>Return data about a single movie by title.</td>
         <td>None.</td>
-        <td>Text Data indicating 'Successful GET request returning movie by title .</td>
+        <td>JSON Data on movies by title.</td>
       </tr>
       <tr>
         <td>GET</td>
-        <td>/genres/:genreName</td>
+        <td>/movies/genre/:name</td>
         <td>Return data by genre name.</td>
         <td>None.</td>
-        <td>>Return data about a genre by name.</td>
+        <td>>JSON Data on info about a specific genre by name/title (e.g., “Thriller”).</td>
       </tr>
       <tr>
         <td>GET</td>
-        <td>/directors/:directorName</td>
+        <td>/movies/director/:name</td>
         <td>Return data about a director by name.</td>
         <td>None.</td>
-        <td>Text Data indicating 'Successful GET request of directors information.' .</td>
+        <td>JSON Data on information about a specific director (bio, birth year, death year) by name.'</td>
       </tr>
       <tr>
-        <td>DELETE</td>
-        <td>/users/:userID</td>
-        <td>Allow existing user to deregister.</td>
+        <td>GET</td>
+        <td>/users</td>
+        <td>Return data about all users.</td>
         <td>None.</td>
-        <td> Text Data indicataing 'Successful DELETE a user!' .</td>
+        <td>JSON Data on all users.'</td>
       </tr>
       <tr>
-        <td>PATCH</td>
-        <td>/users/:userID/favorites/:movieName</td>
-        <td>Allow user to add a movie to the list of favorites.</td>
+        <td>GET</td>
+        <td>/users/:Username</td>
+        <td>Return data about all users by username.</td>
         <td>None.</td>
-        <td> Text Data indicataing 'Successful POST to the server a favorite movie on the user list.' .</td>
-      </tr>
-      <tr>
-        <td>POST</td>
-        <td>/register</td>
-        <td>Allow new users to register.</td>
-        <td>Text Data indicating 'Successful POST to the server a new user registeration.' .</td>
+        <td>JSON Data on all users by username.'</td>
       </tr>
       <tr>
         <td>PUT</td>
-        <td>/users/:userName'</td>
-        <td>Allow user to update the user info</td>
+        <td>/users/:Username</td>
+        <td>Return data about Updated user's info by username.</td>
         <td>A JSON Object holding data about the users structured like:
           <pre>{
             id:1,
-            username:'john_smith',
-            email:'john@example.com',
-            name: "John Smith",
-            password:'XXXXXX',
-            state: "active", </pre>
+            Username:'john_smith',
+            Email:'john@example.com',
+            Password:'XXXXXX',
+            Birthday: "1980-01-01" </pre>
           },</td>
-        <td>Text Data indicataing 'Successful PUT to the server a user information.' .</td>
-      </tr>
-      <tr>
-        <td>DELETE</td>
-        <td>/users/:userID/favorites/:movieName</td>
-        <td>All user to remove a movie from the list of favorites.</td>
-        <td>None.</td>
-        <td> Text Data indicataing 'Successful DELETE to the server a favorite movie on the user list.'.</td>
+        <td>JSON Data on updated user by username.'</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/users</td>
+      <td>Return data about posted user.</td>
+      <td>A JSON Object holding data about the user structured like:
+        <pre>{
+          id:1,
+          Username:'john_smith',
+          Email:'john@example.com',
+          Password:'XXXXXX',
+          Birthday: "1980-01-01" </pre>
+        },</td>
+      <td>JSON Data on the added user.'</td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/users/:Username/movies/:MovieID</td>
+    <td>Return data about a movie to a user's list of favorites.</td>
+    <td>A JSON Object holding data about a favorite movie of the user structured like:
+      <pre>{
+        "FavoriteMovies": [
+        "6194af3da4799d509be09550",
+        "6194aee1a4799d509be0954f"
+    ] </pre>
+      },</td>
+    <td>JSON Data on the added user.'</td>
+  </tr>
+  <tr>
+    <td>DELETE</td>
+    <td>/users/:Username/movies/:MovieID</td>
+    <td>Allow users to remove a movie from their list of favorites.</td>
+    <td>None.</td>
+  <td> A JSON Data of User movie favourites without deleted movie!'.</td>
+</tr>
+  <tr>
+    <td>DELETE</td>
+    <td>/users/:Username</td>
+    <td>Allow existing user to deregister.</td>
+    <td>None.</td>
+    <td> A Text showing deleted username!'.</td>
       </tr>
     </tbody>
   </table>
