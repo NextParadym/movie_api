@@ -12,8 +12,6 @@ const Models = require('./models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
-const Directors = Models.Director;
-const Genres = Models.Genre;
 
 mongoose.connect('mongodb://localhost:27017/myComedyFlix', {
     useNewUrlParser: true, 
@@ -66,12 +64,13 @@ app.get('/movies/:title', (req, res) => {
     });
 });
 
+//Old
 //GET
 //Gets info about a specific genre
-app.get('/genres/genre/:name', (req, res) => {
-    Genres.findOne({ "Genre.Name" : req.params.name })
-    .then((genre) => {
-        res.json(genre);
+app.get('/genres/:name', (req, res) => {
+    Movies.findOne({ "Genre.Name" : req.params.name })
+    .then((movie) => {
+        res.json(movie.Genre);
     })
     .catch((err) => {
         console.error(err);
@@ -81,10 +80,13 @@ app.get('/genres/genre/:name', (req, res) => {
 
 //GET
 //Gets information about a specific director
-app.get('/directors/director/:name', (req, res) => {
-    Directors.findOne({ "Director.Name" : req.params.name })
-    .then((director) => {
-        res.json(director);
+app.get('/directors/:name', (req, res) => {
+    Movies.findOne({ "Director.Name" : req.params.name })
+    .then((movie) => {
+        if (movie) {
+            return res.json(movie.Director); 
+        }
+        return res.send(`Director ${req.params.name} not found!`, 404)
     })
     .catch((err) => {
         console.error(err);
