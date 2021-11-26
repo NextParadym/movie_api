@@ -76,21 +76,13 @@ app.get('/movies/:title', passport.authenticate('jwt', { session: false }), (req
 //Old
 //GET
 //Gets info about a specific genre
-<<<<<<< HEAD
 app.get('/genres/:name', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ "Genre.Name" : req.params.name })
     .then((movie) => {
         if (movie) {
             return res.json(movie.Genre);
         }
-        return res.send(`Genre ${req.params.name} not found!`, 404)
-=======
-app.get('/genres/:name', (req, res) => {
-    Movies.findOne({ "Genre.Name" : req.params.name })
-    .then((movie) => {
-        res.json(movie.Genre);
->>>>>>> 3c5bb0829989d5c9e6bd532a088a4a2f50f294c6
-    })
+        return res.send(`Genre ${req.params.name} not found!`, 404) })
     .catch((err) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
@@ -99,15 +91,11 @@ app.get('/genres/:name', (req, res) => {
 
 //GET
 //Gets information about a specific director
-<<<<<<< HEAD
 app.get('/directors/:name', passport.authenticate('jwt', { session: false }), (req, res) => {
-=======
-app.get('/directors/:name', (req, res) => {
->>>>>>> 3c5bb0829989d5c9e6bd532a088a4a2f50f294c6
     Movies.findOne({ "Director.Name" : req.params.name })
     .then((movie) => {
         if (movie) {
-            return res.json(movie.Director); 
+        return res.json(movie.Director); 
         }
         return res.send(`Director ${req.params.name} not found!`, 404)
     })
@@ -120,7 +108,6 @@ app.get('/directors/:name', (req, res) => {
 //GET
 // Get all users
 app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
-    
     Users.find()
     .then((users) => {
         res.status(201).json(users);
@@ -221,11 +208,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
 });
 
 // Remove a movie to a user's list of favorites
-<<<<<<< HEAD
 app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
-=======
-app.delete('/users/:Username/movies/:MovieID', (req, res) => {
->>>>>>> 3c5bb0829989d5c9e6bd532a088a4a2f50f294c6
     Users.findOneAndUpdate({ Username : req.params.Username }, {
         $pull: { FavoriteMovies: req.params.MovieID }
     },
