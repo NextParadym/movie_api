@@ -1,6 +1,0 @@
-{"_id":{"$oid":"61961537a4799d509be09566"},"DirectorID":2341.0,"Name":"Jonathan Demme","Bio":"Robert Jonathan Demme was an American director, producer, and screenwriter.","Birth":"1944-01-01","Death":"2017-01-01"}
-{"_id":{"$oid":"61961555a4799d509be09567"},"DirectorID":2342.0,"Name":"Tim Burton ","Bio":"Timothy Walter Burton is an American film director, producer, writer and artist.","Birth":"1958-08-25","Death":"NULL"}
-{"_id":{"$oid":"61961574a4799d509be09568"},"DirectorID":2343.0,"Name":"Nicolas Roeg","Bio":"Nicolas Jack Roeg CBE BSC was an English film director and cinematographer.","Birth":"1928-08-15","Death":"2018-11-23"}
-{"_id":{"$oid":"6196159da4799d509be09569"},"DirectorID":2344.0,"Name":"Bong Joon Ho","Bio":"Bong Joon Ho is a  korean writer and producer.","Birth":"1969-09-14","Death":"NULL"}
-{"_id":{"$oid":"619615c9a4799d509be0956a"},"DirectorID":2345.0,"Name":"Hayao Miyazaki","Bio":"Hayao Miyazaki is one of Japan''s greatest animation directors.","Birth":"1941-01-05","Death":"NULL"}
-{"_id":{"$oid":"619615eca4799d509be0956b"},"DirectorID":2346.0,"Name":"Barry Sonnenfeld","Bio":"Barry Sonnenfeld was born and raised in New York City. He graduated from New York University Film School in 1978.","Birth":"1953-04-01","Death":"NULL"}
