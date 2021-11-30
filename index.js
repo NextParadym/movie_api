@@ -18,10 +18,13 @@ const Users = Models.User;
     useNewUrlParser: true, 
     useUnifiedTopology: true,
 });*/
+
+// Secured connection URI
+/*
 mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+});*/
 
 // Mongo Atlas Database (You comment this when you want to connect to local db)
 mongoose.connect(
@@ -56,7 +59,7 @@ const { check, validationResult } = require("express-validator");
 
 // default text response when at /
 app.get("/", (req, res) => {
-  res.send(" welcome to My Comedy Movie Flix!");
+  res.send(" Welcome to My Comedy Movie Flix!");
 });
 
 //Created a topTenMovies list : GET requests
