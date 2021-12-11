@@ -1,6 +1,6 @@
 # movie_api
 
-link: https://nextparadym.github.io/movie_api/
+link: https://github.com/NextParadym/movie_api/tree/gh-pages
 
 This is the server-side component of the "mycomdyFlix" web application. The web application will provide users with access to information about different movies, directors, genres, and actors. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
 
