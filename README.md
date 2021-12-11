@@ -20,4 +20,5 @@ mycomdyFlix further includes:
 User authentication and authorization (basic HTTP authentication and JWT authentication with Passport)
 Data security and validation logic (CORS, password hashing with bcrypt, server-side input validation with express-validator)
 Logging with Morgan
-The API is deployed to Heroku. Read about all the features and relevant endpoints
+The API is deployed to Heroku. Read about all the features and relevant endpoints http://127.0.0.1:5501/public/documentation.html
+
