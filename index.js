@@ -12,11 +12,11 @@ const Models = require("./models.js");
 
 const Movies = Models.Movie;
 const Users = Models.User;
-
+/*
 // Local Database (You comment this when you want to connecto to the mongo atlas DB)
-/*mongoose.connect('mongodb://localhost:27017/myComedyFlix', {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true,
+mongoose.connect("mongodb://localhost:27017/myComedyFlix", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });*/
 
 // Secured connection URI
@@ -27,6 +27,7 @@ mongoose.connect(process.env.CONNECTION_URI, {
 });*/
 
 // Mongo Atlas Database (You comment this when you want to connect to local db)
+
 mongoose.connect(
   "mongodb+srv://appDBS:123JANETuche@myappdbs.sqaoz.mongodb.net/myappDBS?retryWrites=true&w=majority"
 );
@@ -69,7 +70,7 @@ app.get("/documentation", (req, res) => {
 
 //GET
 // Get the list of ALL movies-return JSON object when at /movies
-/*app.get(
+app.get(
   "/movies",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -82,20 +83,7 @@ app.get("/documentation", (req, res) => {
         res.status(400).send("Error: " + err);
       });
   }
-);*/
-
-//To give your React application access to the API, you need to temporarily remove the authentication middleware passport.authenticate('jwt', { session: false }) for the /movies endpoint in your “my-flix/index.js” file:
-
-app.get("/movies", function (req, res) {
-  Movies.find()
-    .then(function (movies) {
-      res.status(201).json(movies);
-    })
-    .catch(function (error) {
-      console.error(error);
-      res.status(500).send("Error: " + error);
-    });
-});
+);
 
 //GET
 //Gets movie by title
