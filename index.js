@@ -26,9 +26,11 @@ mongoose.connect(
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  });*/
+  }
+);*/
 
 // Secured connection URI
+
 mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -72,7 +74,7 @@ app.get("/documentation", (req, res) => {
 
 //GET
 // Get the list of ALL movies-return JSON object when at /movies
-app.get(
+/*app.get(
   "/movies",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -85,8 +87,20 @@ app.get(
         res.status(400).send("Error: " + err);
       });
   }
-);
+); */
 
+//GET for React
+// Get the list of ALL movies-return JSON object when at /movies
+app.get("/movies", function (req, res) {
+  Movies.find()
+    .then(function (movies) {
+      res.status(201).json(movies);
+    })
+    .catch(function (error) {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    });
+});
 //GET
 //Gets movie by title
 app.get(
