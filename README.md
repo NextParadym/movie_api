@@ -6,13 +6,13 @@ This is the server-side component of the "mycomdyFlix" web application. The web 
 
 The Movie API is a REST API built with:
 
-Node.js
+##Node.js
 
-Express
+##Express
 
-MongoDB
+##MongoDB
 
-Mongoose
+##Mongoose
 
 
 mycomdyFlix further includes:
