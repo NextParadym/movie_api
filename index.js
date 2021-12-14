@@ -20,7 +20,6 @@ const Users = Models.User;
 });*/
 
 // Mongo Atlas Database (You comment this when you want to connect to local db)
-
 /*
 mongoose.connect(
   "mongodb+srv://appDBS:123JANETuche@myappdbs.sqaoz.mongodb.net/myappDBS?retryWrites=true&w=majority ",
@@ -28,10 +27,9 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
-);*/
-
+);
+*/
 // Secured connection URI
-
 mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -75,20 +73,16 @@ app.get("/documentation", (req, res) => {
 
 //GET
 // Get the list of ALL movies-return JSON object when at /movies
-app.get(
-  "/movies",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Movies.find()
-      .then((movie) => {
-        res.status(201).json(movie);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(400).send("Error: " + err);
-      });
-  }
-);
+app.get("/movies", (req, res) => {
+  Movies.find()
+    .then((movie) => {
+      res.status(201).json(movie);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).send("Error: " + err);
+    });
+});
 //passport.authenticate("jwt", { session: false }),
 
 //GET
