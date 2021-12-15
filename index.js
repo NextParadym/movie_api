@@ -20,7 +20,6 @@ const Users = Models.User;
 });*/
 
 // Mongo Atlas Database (You comment this when you want to connect to local db)
-
 /*
 mongoose.connect(
   "mongodb+srv://appDBS:123JANETuche@myappdbs.sqaoz.mongodb.net/myappDBS?retryWrites=true&w=majority ",
@@ -28,8 +27,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
-);
-*/
+);*/
 
 // Secured connection URI
 mongoose.connect(process.env.CONNECTION_URI, {
