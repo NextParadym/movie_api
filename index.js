@@ -85,9 +85,9 @@ app.get("/movies", (req, res) => {
 });
 
 //passport.authenticate("jwt", { session: false }),
+
 //GET
 //Gets movie by title
-
 app.get(
   "/movies/:title",
   passport.authenticate("jwt", { session: false }),
