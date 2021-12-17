@@ -83,10 +83,11 @@ app.get("/movies", (req, res) => {
       res.status(400).send("Error: " + err);
     });
 });
-//passport.authenticate("jwt", { session: false }),
 
+//passport.authenticate("jwt", { session: false }),
 //GET
 //Gets movie by title
+
 app.get(
   "/movies/:title",
   passport.authenticate("jwt", { session: false }),
