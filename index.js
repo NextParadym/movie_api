@@ -14,13 +14,13 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // Local Database (You comment this when you want to connecto to the mongo atlas DB)
-/*mongoose.connect("mongodb://localhost:27017/myComedyFlix", {
+mongoose.connect("mongodb://localhost:27017/myComedyFlix", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});*/
+});
 
 // Mongo Atlas Database (You comment this when you want to connect to local db)
-
+/*
 mongoose.connect(
   "mongodb+srv://appDBS:123JANETuche@myappdbs.sqaoz.mongodb.net/myappDBS?retryWrites=true&w=majority ",
   {
