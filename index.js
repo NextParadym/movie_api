@@ -71,7 +71,7 @@ app.get("/documentation", (req, res) => {
   res.sendFile("public/documentation.html", { root: __dirname });
 });
 
-//GET
+//GET-movies
 // Get the list of ALL movies-return JSON object when at /movies
 app.get("/movies", (req, res) => {
   Movies.find()
