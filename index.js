@@ -14,13 +14,14 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // Local Database (You comment this when you want to connecto to the mongo atlas DB)
+/*
 mongoose.connect("mongodb://localhost:27017/myComedyFlix", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+});*/
 
 // Mongo Atlas Database (You comment this when you want to connect to local db)
-/*
+
 mongoose.connect(
   "mongodb+srv://appDBS:123JANETuche@myappdbs.sqaoz.mongodb.net/myappDBS?retryWrites=true&w=majority ",
   {
@@ -28,6 +29,7 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
+
 /*
 // Secured connection URI
 mongoose.connect(process.env.CONNECTION_URI, {
@@ -71,7 +73,7 @@ app.get("/documentation", (req, res) => {
   res.sendFile("public/documentation.html", { root: __dirname });
 });
 
-//GET-movies
+//GET-new movies
 // Get the list of ALL movies-return JSON object when at /movies
 app.get("/movies", (req, res) => {
   Movies.find()
