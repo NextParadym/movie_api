@@ -19,6 +19,7 @@ mongoose.connect("mongodb://localhost:27017/myComedyFlix", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });*/
+
 /*
 // Mongo Atlas Database (You comment this when you want to connect to local db)
 mongoose.connect(
