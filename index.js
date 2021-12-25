@@ -73,20 +73,16 @@ app.get("/documentation", (req, res) => {
 
 //GET-new movies
 // Get the list of ALL movies-return JSON object when at /movies
-app.get(
-  "/movies",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Movies.find()
-      .then((movie) => {
-        res.status(201).json(movie);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(400).send("Error: " + err);
-      });
-  }
-);
+app.get("/movies", (req, res) => {
+  Movies.find()
+    .then((movie) => {
+      res.status(201).json(movie);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).send("Error: " + err);
+    });
+});
 
 ///passport.authenticate("jwt", { session: false }),
 //GET
